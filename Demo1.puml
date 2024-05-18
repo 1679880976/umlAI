@@ -1,0 +1,10 @@
+@startuml
+left to right direction
+
+actor User
+actor Admin
+usecase Login
+usecase Logout
+Login ..> Logout : "<<include>>"
+User --> Login : ""
+@enduml

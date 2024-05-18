@@ -1,0 +1,10 @@
+@startuml
+state Autonomous {
+    Safe -> Unsafe: 机器人与老人间的距离少于安全距离
+    Safe <- Unsafe: 机器人与老人间的距离大于安全距离
+}
+[*] -> Autonomous
+Autonomous -> [*]
+Autonomous -> Manual: 家属或医生控制机器人活动
+Manual -> Autonomous: 家属或医生控制机器人活动
+@enduml

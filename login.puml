@@ -1,0 +1,22 @@
+@startuml
+actor User
+activate User
+boundary loginUI
+control LoginManager
+entity UserLibrary
+
+
+activate LoginManager
+activate UserLibrary
+activate loginUI
+
+
+User -> loginUI: goto
+loginUI -> LoginManager: login(account,password)
+LoginManager -> UserLibrary: VerifyUserValidity(account,password)
+UserLibrary --> LoginManager: UserValidity
+LoginManager --> loginUI: LoginResult
+
+
+
+@enduml

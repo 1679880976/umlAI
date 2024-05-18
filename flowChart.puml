@@ -1,0 +1,32 @@
+@startuml
+|家属/医生|
+  start
+  :登录;
+  :请求监视老人状况;
+  |机器人|
+    :自主跟随老人;
+    :感知和获取老人信息;
+  fork
+  :分析老人信息;
+  if (有异常?) then (yes)
+    :传送异常通知;
+    split
+    |家属/医生|
+    :收到异常通知;
+    :请求结束监视老人状况;
+    :结束监控;
+    stop
+    split again
+    break
+    end split
+  else (no)
+  end if
+  fork again
+      :传送老人信息;
+      split
+      :收到老人信息;
+      :请求结束监视老人状况;
+      end split
+    end fork
+  stop
+@enduml

@@ -1,0 +1,62 @@
+@startuml
+class LoginUI
+class SettingUI
+class MotionCtrlUI {
++displayRobotStatus()
+}
+class MonitoringUI {
++displayElderInfo()
+}
+
+
+class BiCallUI {
++playAudio&Video()
+}
+class LoginManager {
++login(account,password)
+}
+class SettingManager {
++setPreference()
++startMonitoring()
+}
+class MotionController {
++connectRobot()
++moveCommand(Direction,Steps)
+}
+class MonitorManager {
++stopMonitoring()
++startMonitoring()
+}
+class CallController {
++requestCall()
++closeCall()
+}
+class UserLibrary {
++verifyUserValidity(account,password)
++saveUserInfo()
+}
+class SettingLibrary {
++saveSetting()
+}
+class User
+class Administrator
+class Elder
+class Doctor
+class FamilyMember
+
+LoginUI -> MonitoringUI
+LoginUI -- LoginManager
+SettingUI -- SettingManager
+MotionCtrlUI -- MotionController
+MonitoringUI -- MonitorManager
+BiCallUI -- CallController
+LoginManager -- UserLibrary
+SettingManager -- SettingLibrary
+SettingLibrary -- UserLibrary
+UserLibrary -- User
+User <|-- Administrator
+User <|-- Elder
+User <|-- Doctor
+User <|-- FamilyMember
+
+@enduml

@@ -1,0 +1,51 @@
+@startuml
+left to right direction
+
+actor 家属
+actor 医生
+actor 老人
+actor 机器人
+actor 时钟
+actor 管理员
+
+rectangle {
+  usecase 监视老人
+  usecase 控制机器人
+  usecase 用户登录
+  usecase 视频语音交互
+  usecase 自主跟随老人
+  usecase 获取老人信息
+  usecase 检测异常状况
+  usecase 通知异常状况
+  usecase 提醒服务
+  usecase 系统设置
+}
+
+家属 -- (控制机器人)
+家属 -- (监视老人)
+家属 -- (用户登录)
+家属 -- (视频语音交互)
+
+医生 -- (控制机器人)
+医生 -- (监视老人)
+医生 -- (用户登录)
+医生 -- (视频语音交互)
+
+老人 -- (视频语音交互)
+
+控制机器人 -- 机器人
+自主跟随老人 -- 机器人
+获取老人信息 -- 机器人
+提醒服务 -- 机器人
+提醒服务 -- 时钟
+系统设置 -- 管理员
+
+'视频/语音交互 --> 获取老人信息
+
+监视老人 ..> 控制机器人 : <<include>>
+监视老人 ..> 自主跟随老人 : <<include>>
+监视老人 ..> 获取老人信息 : <<include>>
+监视老人 ..> 检测异常状况 : <<include>>
+监视老人 ..> 通知异常状况 : <<include>>
+
+@enduml
